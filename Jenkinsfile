@@ -13,7 +13,7 @@ pipeline{
 		}
 		stage("Checkout from scm"){
 			steps{
-				git branch: 'main', url: 'https://github.com/Ashfaque-9x/register-app.git'
+				git branch: 'main', url: 'https://github.com/AlokSingh-dotcom/register-app.git'
 			}
 		}
 		
