@@ -33,7 +33,7 @@ pipeline{
             		installationName: 'sonarqube_server',
             		credentialsId: 'jenkinssonar'
        		 ) {
-            	sh 'mvn sonar:sonar'
+            	sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.8.0.7211:sonar'
         }
     }
 }
