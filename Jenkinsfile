@@ -3,6 +3,14 @@ pipeline{
 	tools{
 		jdk 'java17'
 		maven 'Maven3'
+	enviromental {
+		APP_NAME = "Mavenappplicatin"
+		RELEASE = "1.0.0"
+		DOCKER_USER = "alokdocio"
+		DOCKER_PASS = "dckr_pat_Mekfs9k8_CKDnQ_pX_TlzvS1jmU"
+		IMAGE_NAME = "${DOCKER_USER}" + "/" +  "${APP_NAME}"
+	}
+		
 		
 	}
 	stages{
@@ -43,6 +51,20 @@ pipeline{
 					 waitForQualityGate abortPipeline: false, credentialsId: 'jenkinssonar'
 				 }
 			 }
+		}
+		stage("Docker image build and run"){
+			steps{
+				script{
+					docker.withRegistry('' ,DOCKER_PASS){
+						docker_image = docker.build("$(IMAGE_NAME)")
+					}
+					docker.withRegistry('',DOCKER_PASS){
+						docker_image.push("$(IMAGE_TAG)")
+						docker_image.push('latest')
+					}
+				} 
+				
+			}
 		}
 		 
 	}
