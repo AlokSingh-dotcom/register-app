@@ -54,20 +54,19 @@ pipeline{
 				 }
 			 }
 		}
-		stage("Docker image build and run"){
-			steps{
-				script{
-					docker.withRegistry('' ,DOCKER_PASS){
-						docker_image = docker.build("${IMAGE_NAME}")
-					}
-					docker.withRegistry('',DOCKER_PASS){
-						docker_image.push("${IMAGE_TAG}")
-						docker_image.push('latest')
-					}
-				} 
-				
-			}
-		}
+		stage("Docker image build and push") {
+   			steps {
+        		script {
+            		docker.withRegistry('https://index.docker.io/v1/', 'docker-credentials') {
+
+                		docker_image = docker.build(IMAGE_NAME)
+
+                		docker_image.push("${RELEASE}")
+                		docker_image.push('latest')
+            }
+        }
+    }
+}
 		 
 	}
 	
