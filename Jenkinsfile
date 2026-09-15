@@ -3,6 +3,8 @@ pipeline{
 	tools{
 		jdk 'java17'
 		maven 'Maven3'
+	}
+		
 	enviroment {
 		APP_NAME = "Mavenappplicatin"
 		RELEASE = "1.0.0"
@@ -12,7 +14,7 @@ pipeline{
 	}
 		
 		
-	}
+	
 	stages{
 		stage("cleanup workspace"){
 			steps{
