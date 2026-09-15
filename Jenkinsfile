@@ -6,7 +6,7 @@ pipeline{
 	}
 		
 	environment {
-		APP_NAME = "Mavenappplicatin"
+		APP_NAME = "mavenappplicatin"
 		RELEASE = "1.0.0"
 		DOCKER_USER = "alokdocio"
 		DOCKER_PASS = "dckr_pat_Mekfs9k8_CKDnQ_pX_TlzvS1jmU"
