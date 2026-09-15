@@ -57,7 +57,7 @@ pipeline{
 		stage("Docker image build and push") {
    			steps {
         		script {
-            		docker.withRegistry('https://index.docker.io/v1/', 'docker-credentials') {
+            		docker.withRegistry('https://index.docker.io/v1/', 'docker') {
 
                 		docker_image = docker.build(IMAGE_NAME)
 
