@@ -3,7 +3,7 @@ pipeline{
 	tools{
 		jdk 'java17'
 		maven 'Maven3'
-	enviromental {
+	enviroment {
 		APP_NAME = "Mavenappplicatin"
 		RELEASE = "1.0.0"
 		DOCKER_USER = "alokdocio"
