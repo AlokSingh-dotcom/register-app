@@ -5,7 +5,7 @@ pipeline{
 		maven 'Maven3'
 	}
 		
-	enviroment {
+	environment {
 		APP_NAME = "Mavenappplicatin"
 		RELEASE = "1.0.0"
 		DOCKER_USER = "alokdocio"
