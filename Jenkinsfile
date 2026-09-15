@@ -8,7 +8,7 @@ pipeline{
 		RELEASE = "1.0.0"
 		DOCKER_USER = "alokdocio"
 		DOCKER_PASS = "dckr_pat_Mekfs9k8_CKDnQ_pX_TlzvS1jmU"
-		IMAGE_NAME = "${DOCKER_USER}" + "/" +  "${APP_NAME}"
+		IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
 	}
 		
 		
@@ -56,10 +56,10 @@ pipeline{
 			steps{
 				script{
 					docker.withRegistry('' ,DOCKER_PASS){
-						docker_image = docker.build("$(IMAGE_NAME)")
+						docker_image = docker.build("${IMAGE_NAME}")
 					}
 					docker.withRegistry('',DOCKER_PASS){
-						docker_image.push("$(IMAGE_TAG)")
+						docker_image.push("${IMAGE_TAG}")
 						docker_image.push('latest')
 					}
 				} 
