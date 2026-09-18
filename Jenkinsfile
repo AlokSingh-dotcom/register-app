@@ -67,6 +67,23 @@ pipeline{
         }
     }
 }
+		stage("Trivy Scan") {
+    		steps {
+		        script {
+            		sh("docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image ${IMAGE_NAME}:${IMAGE_TAG}")
+        }
+    }
+}
+		stage("Cleanup Artifacts") {
+    		steps {
+        		script {
+            		sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+            		sh "docker rmi ${IMAGE_NAME}:latest"
+        }
+    }
+}
+
+		
 		 
 	}
 	
